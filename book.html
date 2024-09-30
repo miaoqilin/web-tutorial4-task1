@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Book Catalogue</title>
+</head>
+<body>
+<table id="bookCatalogue">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  fetch('book.xml')
+    .then(response => response.text())
+    .then(text => {
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(text, "text/xml");
+      const books = xmlDoc.getElementsByTagName("book");
+
+      let tbody = document.querySelector("#bookCatalogue tbody");
+      for (let i = 0; i < books.length; i++) {
+        let tr = document.createElement("tr");
+        let titleTd = document.createElement("td");
+        let authorTd = document.createElement("td");
+        let priceTd = document.createElement("td");
+
+        titleTd.textContent = books[i].getElementsByTagName("title")[0].textContent;
+        authorTd.textContent = books[i].getElementsByTagName("author")[0].textContent;
+        priceTd.textContent = books[i].getElementsByTagName("price")[0].textContent;
+
+        tr.appendChild(titleTd);
+        tr.appendChild(authorTd);
+        tr.appendChild(priceTd);
+
+        tbody.appendChild(tr);
+      }
+    });
+});
+</script>
+</body>
+</html>

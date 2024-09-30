@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+  <book id="b1">
+    <title>Book Title 1</title>
+    <author>Author Name 1</author>
+    <price>29.99</price>
+  </book>
+  <book id="b2">
+    <title>Book Title 2</title>
+    <author>Author Name 2</author>
+    <price>19.99</price>
+  </book>
+  <!-- 添加更多的书籍 -->
+</catalog>
